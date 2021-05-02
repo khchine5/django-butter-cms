@@ -31,3 +31,5 @@ virtualenv==20.4.4
 virtualenv-clone==0.5.4
 whitenoise==5.2.0
 zipp==3.4.1
+django_heroku==0.3.1
+psycopg2==2.8.6
