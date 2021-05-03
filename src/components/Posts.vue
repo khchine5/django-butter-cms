@@ -1,32 +1,27 @@
 <template>
-  <div class="hello">
-    <img src='@/assets/logo-django.png' style="width: 250px" />
-    <p>My awesome blog</p>
-    <br/>
-    <hr/>
-    <h3>Posts on Database</h3>
+  <div>
     <p v-if="posts.length === 0">No posts</p>
     <div v-for="_post in posts" :key="_post.slug">
-      <h3>Post Title:{{ _post.title }} </h3>  
-          <h3>Post summary: </h3>{{ _post.summary }}
-        <h2>Essential Links</h2>
-        <router-link
-            :to="{ path: '/post/' + _post.slug}" >more..</router-link>
+      <h3>Post Title:{{ _post.title }}</h3>
+      <h3>Post summary:</h3>
+      {{ _post.summary }}
+      <router-link :to="{ path: '/blog/' + _post.slug }"
+        >Read more ..</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   computed: mapState({
-    posts: state => state.posts.posts
+    posts: (state) => state.posts.posts,
   }),
   created() {
     this.$store.dispatch("posts/getPosts");
-
-  }
+  },
 };
 </script>
 
@@ -55,5 +50,4 @@ img {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-
 </style>

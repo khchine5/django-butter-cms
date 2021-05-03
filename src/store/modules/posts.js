@@ -26,7 +26,13 @@ const actions = {
     .then(post => {
       commit('setPost', post.data)
     })
-  }
+  },
+  getMainPost({ commit}) {
+    postsService.fetchMainPost()
+    .then(post => {
+      commit('setPost', post)
+    })
+  },
 }
 
 const mutations = {

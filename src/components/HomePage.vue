@@ -1,29 +1,23 @@
 <template>
-  <div class="hello">
-    <img src='@/assets/logo-django.png' style="width: 250px" />
-    <p>My awesome blog</p>
-    <br/>
-    <hr/>
-    <h3>Posts on My Butter CMS Account</h3>
+  <div>
+    <router-link :to="{ path: '/blog/'}" >See more of my blogs</router-link>
     <h3>Post Title:{{ post.title }} </h3>  
         <h3>Post Body: </h3>
         
         <span v-html="post.body"></span>
-  </div>
+    </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   computed: mapState({
-    post: state => state.posts.post
+    post: (state) => state.posts.post,
   }),
   created() {
-    this.$store.dispatch("posts/getPost",{slug: this.slug});
-
+    this.$store.dispatch("posts/getMainPost");
   },
-  props: ['slug'],
 };
 </script>
 
@@ -52,5 +46,4 @@ img {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-
 </style>

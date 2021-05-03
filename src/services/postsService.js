@@ -8,5 +8,9 @@ export default {
   fetchPost(params) {
     return api.get(`post/` + params.slug)
               .then(response => response.data)
-  }
+  },
+  fetchMainPost() {
+    return api.get(`main-post/`)
+              .then(response => response.data)
+  },
 }
